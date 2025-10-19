@@ -4,13 +4,27 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.Review;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+
 @Repository
+@RequiredArgsConstructor
 public class ReviewRepositoryImpl implements ReviewRepository {
 
+	private final JdbcTemplate jdbcTemplate;
 
 	@Override
 	public void add(Review review) {
-		System.out.println("登録");
+		String sql = "INSERT INTO t_review" + "(restaurant_id, user_id, visit_date, rating, comment)" + "VALUES (?, ?, ?, ?, ?)";
+		
+		jdbcTemplate.update(sql, review.getRestaurantId(),
+				review.getUserId(),
+				review.getVisitDate(),
+				review.getRating(),
+				review.getComment()
+				);
+	             
 		System.out.println(review);
 
 	}
