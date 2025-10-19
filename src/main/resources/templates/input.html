@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http:/www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Form Spring</title>
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	</link>
+</head>
+
+<body>
+
+	<h2>フォーム</h2>
+	<form th:action="@{/post-param}" method="POST">
+		<label>挨拶</label>
+		<input type="text" name="greeting">
+		<div>
+		<button type="submit">送信</button>
+		</div>
+
+	</form>
+
+</body>
+
+</html>
