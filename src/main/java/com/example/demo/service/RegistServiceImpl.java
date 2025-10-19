@@ -3,7 +3,7 @@ package com.example.demo.service;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Review;
-import com.example.demo.repository.RegistRepository;
+import com.example.demo.repository.ReviewRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class RegistServiceImpl implements RegistService {
 
-	private final RegistRepository repository;
+	private final ReviewRepository repository;
 	@Override
 	public void regist(Review review) {
 		repository.add(review);

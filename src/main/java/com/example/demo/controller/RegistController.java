@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-public class ReviewController {
+public class RegistController {
 
 	private final RegistService service;
 
@@ -53,10 +53,9 @@ public class ReviewController {
 			return "regist-review";
 		}
 
-
-//		登録用のDTOを作成
+		//		登録用のDTOを作成
 		Review review = new Review();
-//		formのgetterを使って、値を取得、DTOのsetterを使って、値を設定している
+		//		formのgetterを使って、値を取得、DTOのsetterを使って、値を設定している
 		review.setRestaurantId(form.getRestaurantId());
 		review.setUserId(form.getUserId());
 		review.setVisitDate(form.getVisitDate());
@@ -65,8 +64,8 @@ public class ReviewController {
 		service.regist(review);
 
 		//		ここでDBに登録する処理を行う
-		model.addAttribute("msg", "登録が完了しました");
-		return "complete-regist-review";
+		model.addAttribute("msg", "レビュー登録");
+		return "complete";
 	}
 
 }

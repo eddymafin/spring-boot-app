@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.entity.Review;
 
 @Repository
-public class RegistRepositoryImpl implements RegistRepository {
+public class ReviewRepositoryImpl implements ReviewRepository {
 
 
 	@Override
