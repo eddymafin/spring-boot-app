@@ -1,12 +1,12 @@
 package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entity.Review;
 import com.example.demo.form.ReviewRegistForm;
@@ -47,7 +47,7 @@ public class RegistController {
 	}
 
 	@PostMapping("/confirm-regist-review")
-	public String confirmRegistReview(@Validated ReviewRegistForm form, BindingResult result, Model model) {
+	public String confirmRegistReview(@Validated ReviewRegistForm form, BindingResult result, RedirectAttributes redirectAttributes) {
 
 		if (result.hasErrors()) {
 			return "regist-review";
@@ -64,8 +64,12 @@ public class RegistController {
 		service.regist(review);
 
 		//		ここでDBに登録する処理を行う
-		model.addAttribute("msg", "レビュー登録");
-		return "complete";
+		//		model.addAttribute("msg", "登録が完了しました");
+		//		フラッシュスコープに格納するように修正
+		redirectAttributes.addFlashAttribute("nsg", "(レビュー登録)");
+//				return "complete";
+//		リダイレクト先を指定するように修正
+		return "redirect:/complete";
 	}
 
 }
