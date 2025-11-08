@@ -1,10 +1,60 @@
 @charset "UTF-8";
 
-h1 {
-	color: red;
+html {
+  background-color: #fbeaea;
 }
 
+h1 {
+  color: red;
+}
 
 .error-msg {
-	color: red;
+  color: red;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+.more-button {
+  background: salmon;
+  padding: 0.8em 1.5em;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #323232;
+  cursor: pointer;
+}
+
+.form-area {
+  max-width: 60%;
+  margin: 0 auto;
+  display: grid;
+  gap: 30px;
+  align-items: center;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-input input {
+  padding: 0.5em;
+  margin: 0;
+}
+
+.button-area {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  margin: 0;
 }

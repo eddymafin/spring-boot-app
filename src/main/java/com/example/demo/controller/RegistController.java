@@ -66,10 +66,16 @@ public class RegistController {
 		//		ここでDBに登録する処理を行う
 		//		model.addAttribute("msg", "登録が完了しました");
 		//		フラッシュスコープに格納するように修正
-		redirectAttributes.addFlashAttribute("nsg", "(レビュー登録)");
-//				return "complete";
-//		リダイレクト先を指定するように修正
-		return "redirect:/complete";
+		
+		String msg = "";
+		try {
+			//	 例外処理で記述しないと、エンコードされない
+			msg = java.net.URLEncoder.encode("レビュー登録が完了しました", "UTF-8");
+		} catch (java.io.UnsupportedEncodingException e) {
+			// 万が一エンコードに失敗した場合、簡単に fallback
+			msg = "レビュー登録が完了しました";
+		}
+		return "redirect:/complete?from=review&msg=" + msg;
 	}
 
 }
