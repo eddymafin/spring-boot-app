@@ -1,10 +1,25 @@
 package com.example.demo.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class Restaurant {
- private String restaurantName;
- private String catchPhrase;
+	private int restaurantId;
+	private String restaurantName;
+	private String catchPhrase;
+	private double averageRating;
+
 	
+	public String formatAverageRating() {
+		String result;
+		if(averageRating == 0.0) {
+			result = "-";
+		} else {
+			result = String.format("%.1f", averageRating);
+		}
+		
+		return result;
+	}
 }

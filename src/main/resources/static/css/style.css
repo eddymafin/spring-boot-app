@@ -17,6 +17,7 @@ h1 {
   font-weight: bold;
   color: #333;
   text-align: center;
+  margin-top: 20px;
 }
 
 .more-button {
@@ -29,9 +30,12 @@ h1 {
   cursor: pointer;
 }
 
-.form-area {
+.container {
   max-width: 60%;
   margin: 0 auto;
+}
+
+.form-area {
   display: grid;
   gap: 30px;
   align-items: center;
@@ -57,4 +61,45 @@ h1 {
 
 p {
   margin: 0;
+}
+
+.restaurant-list {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.restaurant-list thead {
+  background-color: #f5f5f5;
+}
+
+.restaurant-list th {
+  text-align: left;
+  padding: 12px 16px;
+  font-weight: 600;
+  color: #555;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.restaurant-list td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.restaurant-list tr:last-child td {
+  border-bottom: none;
+}
+
+.restaurant-list tbody tr:hover {
+  background-color: #f9f9f9;
+  transition: background-color 0.2s ease;
+}
+
+.rating {
+  text-align: right;
+  color: #f39c12; /* 明るいオレンジ系で評価を目立たせる */
 }

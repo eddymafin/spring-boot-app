@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>レストラン検索</title>
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+	<main class="container">
+
+		<h2 class="title">レストラン検索</h2>
+		<form th:action="@{/restaurant-search}" method="POST" th:object="${restaurantSearchForm}">
+			<div class="form-area">
+				<div class="form-input">
+					<label>店舗名</label>
+					<input type="text" th:field="*{restaurantName}">
+					<div th:if="${#fields.hasErrors('restaurantName')}" th:errors="*{restaurantName}" class="error-msg"></div>
+				</div>
+				<button type="submit" class="more-button">検索</button>
+			</div>
+		</form>
+
+		<div th:if="${restaurantList != null}">
+			<h2 class="title">レストラン一覧</h2>
+			<table class="restaurant-list">
+				<thead>
+					<tr>
+						<th>店舗ID</th>
+						<th>店舗名</th>
+						<th>キャッチフレーズ</th>
+						<th>平均評価</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="restaurant: ${restaurantList}">
+						<td th:text="${restaurant.restaurantId}"></td>
+						<td th:text="${restaurant.restaurantName}"></td>
+						<td th:text="${restaurant.catchPhrase}"></td>
+						<td class="rating" th:text="${restaurant.formatAverageRating()}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</main>
+</body>
+
+</html>
