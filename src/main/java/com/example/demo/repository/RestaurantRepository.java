@@ -5,4 +5,6 @@ import com.example.demo.entity.Restaurant;
 public interface RestaurantRepository {
 
 	void add(Restaurant restaurant);
+	
+
 }
