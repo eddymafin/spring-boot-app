@@ -9,32 +9,49 @@
 
 <body>
 
-	<h2>レビュー登録</h2>
-
-	<form th:action="@{/regist-review}" method="POST" th:object="${reviewRegistForm}">
-		【店舗ID】<br>
-		<!-- th:fieldで、id、name、valueが自動で出力される -->
-		<input type="text" th:field="*{restaurantId}"><br>
-		<div th:if="${#fields.hasErrors('restaurantId')}" th:errors="*{restaurantId}" class="error-msg"></div>
-		<br>
-		【利用者ID】<br>
-		<input type="text" th:field="*{userId}"><br>
-		<div th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" class="error-msg"></div>
-		<br>
-		【来店日】<br>
-		<input type="date" th:field="*{visitDate}"><br>
-		<div th:if="${#fields.hasErrors('visitDate')}" th:errors="*{visitDate}" class="error-msg"></div>
-		<br>
-		【評価】(1-5)<br>
-		<input type="text" th:field="*{rating}"><br>
-		<div th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}" class="error-msg"></div>
-		<br>
-		【一言コメント】<br>
-		<input type="text" th:field="*{comment}" class="comment"><br>
-		<div th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}" class="error-msg"></div>
-		<br>
-		<input type="submit" value="登録" class="button">
-	</form>
+	<main class="container">
+		<h2 class="title">レビュー登録</h2>
+		<form th:action="@{/regist-review}" method="POST" th:object="${reviewRegistForm}">
+			<div class="form-area">
+				<div class="form-input">
+					<p>店舗ID</p>
+					<p th:text="*{restaurantId} + ':'+ *{restaurantName}"></p>
+					<input type="hidden" th:field="*{restaurantId}">
+					<input type="hidden" th:field="*{restaurantName}">
+					<!-- th:fieldで、id、name、valueが自動で出力される -->
+					<!-- <input type="text" th:field="*{restaurantId}">
+					<div th:if="${#fields.hasErrors('restaurantId')}" th:errors="*{restaurantId}" class="error-msg"></div> -->
+				</div>
+				<div class="form-input">
+					<label for="">【利用者ID】</label>
+					<input type="text" th:field="*{userId}">
+					<div th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" class="error-msg"></div>
+				</div>
+				<div class="form-input">
+					<label for="">【来店日】</label>
+					<input type="date" th:field="*{visitDate}">
+					<div th:if="${#fields.hasErrors('visitDate')}" th:errors="*{visitDate}" class="error-msg"></div>
+				</div>
+				<div class="form-input">
+					【評価】(1-5)
+					<select th:field="*{rating}">
+						<option value="0">選択してください。</option>
+						<option th:each="option: ${#numbers.sequence(1,5)}" th:value="${option}" th:text="${option}"
+							th:selected="${option == rating}"></option>
+					</select>
+					<!-- <input type="text" th:field="*{rating}"> -->
+					<div th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}" class="error-msg"></div>
+				</div>
+				<div class="form-input">
+					【一言コメント】
+					<input type="text" th:field="*{comment}" class="comment">
+					<div th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}" class="error-msg"></div>
+				</div>
+				<button class="more-button" type="submit">登録</button>
+				<a class="back-button" th:href="@{/top}">トップページにもどる</a>
+			</div>
+		</form>
+	</main>
 
 </body>
 

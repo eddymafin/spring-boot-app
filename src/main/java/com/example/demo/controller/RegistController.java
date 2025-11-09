@@ -3,7 +3,6 @@ package com.example.demo.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -21,7 +20,7 @@ public class RegistController {
 	private final RegistService service;
 
 	//	登録画面表示
-	@GetMapping("/show-review-form")
+	@PostMapping("/show-review-form")
 	public String showReviewForm(@ModelAttribute ReviewRegistForm form) {
 		return "regist-review";
 	}

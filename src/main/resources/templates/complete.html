@@ -9,13 +9,15 @@
 
 <body>
 
-	<h2 class="title">完了</h2>
-	<div class="form-area">
-		<p>処理が完了しました。</p>
-		<p th:text="${msg}"></p>
-		<a class="more-button" th:if="${from} == 'review'" th:href="@{/show-review-form}">入力画面に戻る</a>
-		<a class="more-button" th:if="${from} == 'restaurant'" th:href="@{/show-restaurant-form}">入力画面に戻る</a>
-	</div>
+	<main class="container">
+		<h2 class="title">完了</h2>
+		<div class="form-area">
+			<p>処理が完了しました。</p>
+			<p th:text="${msg}"></p>
+			<a class="back-button" th:if="${from} == 'review'" th:href="@{/top}">入力画面に戻る</a>
+			<a class="back-button" th:if="${from} == 'restaurant'" th:href="@{/show-restaurant-form}">入力画面に戻る</a>
+		</div>
+	</main>
 
 </body>
 
