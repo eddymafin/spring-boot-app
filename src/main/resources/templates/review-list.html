@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>レビュー一覧</title>
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+	<main class="container">
+
+		<h2 class="title">レビュー一覧</h2>
+		<div class="form-area" th:object="${reviewSearchForm}">
+			<div class="form-input">
+				<label>店舗名</label>
+				<p th:text="*{restaurantId} + '' + *{restaurantName}"></p>
+			</div>
+		</div>
+
+		<div th:if="${reviewList == null}">
+			<p>レビューが存在しません</p>
+		</div>
+
+		<div th:if="${reviewList != null}">
+			<table class="list-box">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>ユーザー</th>
+						<th>来店日</th>
+						<th>評価</th>
+						<th>コメント</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="review: ${reviewList}">
+						<td th:text="${review.restaurantId}"></td>
+						<td th:text="${review.userId}"></td>
+						<td th:text="${review.visitDate}"></td>
+						<td th:text="${review.rating}"></td>
+						<td th:text="${review.comment}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</main>
+</body>
+
+</html>

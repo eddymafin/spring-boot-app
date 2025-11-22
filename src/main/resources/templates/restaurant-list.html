@@ -24,10 +24,10 @@
 
 		<div th:if="${restaurantList != null}">
 			<h2 class="title">レストラン一覧</h2>
-			<table class="restaurant-list">
+			<table class="list-box">
 				<thead>
 					<tr>
-						<th></th>
+						<th colspan="2"></th>
 						<th>店舗ID</th>
 						<th>店舗名</th>
 						<th>キャッチフレーズ</th>
@@ -36,6 +36,13 @@
 				</thead>
 				<tbody>
 					<tr th:each="restaurant: ${restaurantList}">
+						<td>
+							<form th:action="@{/search-review}" method="POST">
+								<input type="hidden" name="restaurantId" th:value="${restaurant.restaurantId}">
+								<input type="hidden" name="restaurantName" th:value="${restaurant.restaurantName}">
+								<button class="more-button" type="submit">一覧</button>
+							</form>
+						</td>
 						<td>
 							<form th:action="@{/show-review-form}" method="POST">
 								<input type="hidden" name="restaurantId" th:value="${restaurant.restaurantId}">
