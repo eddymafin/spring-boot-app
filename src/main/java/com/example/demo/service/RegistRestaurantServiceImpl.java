@@ -15,7 +15,6 @@ public class RegistRestaurantServiceImpl implements RegistRestaurantService{
 	
 	@Override
 	public void regist(Restaurant restaurant) {
-		System.out.println(restaurant);
 		restaurantRepository.add(restaurant);
 	}
 	

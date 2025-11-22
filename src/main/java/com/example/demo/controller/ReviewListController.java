@@ -30,7 +30,6 @@ public class ReviewListController {
 		
 		List<Review> list = service.findByRestaurantId(form.getRestaurantId());
 		
-		System.out.println(list);
 		if(list.size() > 0) {
 			model.addAttribute("reviewList", list);
 		}

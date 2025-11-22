@@ -30,7 +30,6 @@ public class ReviewRepositoryImpl implements ReviewRepository {
 				review.getComment()
 				);
 	             
-		System.out.println(review);
 
 	}
 

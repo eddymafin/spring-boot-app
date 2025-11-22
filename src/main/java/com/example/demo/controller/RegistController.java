@@ -34,7 +34,6 @@ public class RegistController {
 	//	登録リクエスト
 	@PostMapping("/regist-review")
 	public String registReview(@Validated @ModelAttribute ReviewRegistForm form, BindingResult result) {
-		System.out.println(form);
 
 		//		 入力項目にエラーがある場合は、登録画面に遷移する
 		if (result.hasErrors()) {
